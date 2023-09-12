@@ -19,6 +19,9 @@
   "bugs": {
     "url": "https://github.com/Xclusive09/REST-API/issues"
   },
+  "engines": {
+    "node": "20.6.0"
+  },
   "homepage": "https://github.com/Xclusive09/REST-API#readme",
   "dependencies": {
     "body-parser": "^1.20.2",
