@@ -2,15 +2,17 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
-require('dotenv').config({ path: ".env" });
+
+// Define your MongoDB URI directly in your code
+const MONGODB_URI = "mongodb+srv://Xclusive:Akolade1234@restapi.wstlbei.mongodb.net/restapi?retryWrites=true&w=majority";
 
 app.use(express.json());
 
-// Connect to MongoDB using the MONGODB_URI environment variable
+// Connect to MongoDB using the defined MONGODB_URI
 mongoose
-  .connect(process.env.MONGODB_URI, {
+  .connect(MONGODB_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   })
   .then(() => {
     app.listen(port, () => {
