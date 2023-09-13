@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const port = 3000;
-require("dotenv").config();
+require('dotenv').config();
 
 app.use(express.json());
 
@@ -19,6 +19,8 @@ mongoose
   .catch((error) => {
     console.error("Error connecting to MongoDB:", error);
   });
+  console.log('MongoDB URI:', process.env.MONGODB_URI);
+
 
 // Mongoose schema
 const userSchema = new mongoose.Schema({
