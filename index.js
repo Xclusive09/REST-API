@@ -6,9 +6,10 @@ require('dotenv').config({ path: ".env" });
 
 app.use(express.json());
 
-
-  mongoose.connect(process.env.MONGO_URL, 
-  {useNewUrlParser: true, 
+// Connect to MongoDB using the MONGODB_URI environment variable
+mongoose
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
     useUnifiedTopology: true
   })
   .then(() => {
@@ -19,8 +20,6 @@ app.use(express.json());
   .catch((error) => {
     console.error("Error connecting to MongoDB:", error);
   });
-  console.log('MongoDB URI:', process.env.MONGODB_URI);
-
 
 // Mongoose schema
 const userSchema = new mongoose.Schema({
@@ -36,7 +35,7 @@ const User = mongoose.model("User", userSchema);
 // Create a new user
 app.post("/api", async (req, res) => {
   if (!req.body) {
-    res.status(400).json({ message: "Cannot create new user without details" });
+    res.status(400).json({ message: "Cannot create a new user without details" });
     return;
   }
   try {
